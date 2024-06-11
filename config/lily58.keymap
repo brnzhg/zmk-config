@@ -42,14 +42,14 @@
 // |  F12  |  F1  |  F2          |  F3            |  F4              |  F5        |                   |  F6     |  F7              |  F8            |  F9        |  F10  |  F11  |
 // |       |      |  BSPC        |  &msc SCRL_UP  |  &msc SCRL_DOWN  |            |                   |         |  &msc SCRL_DOWN  |  &msc SCRL_UP  |  BSPC      |  (    |   )   |
 // |       |      |  RC(BSPC)    |  &mkp MB2      |  &mkp MB1        |  &mkp MB3  |                   |  ENTER  |  &mkp MB1        |  &mkp MB2      |  RC(BSPC)  |  F10  |  F11  |
-// |       |      |              |  &mkp PG_UP    |  &mkp PG_DN      |            |  ENTER |  | ENTER |         |  &mkp PG_DN      |  &mkp PG_UP    |  {         |   }   |  "|"  |
+// |       |      |              |  &kp PG_UP     |  &kp PG_DN       |            |  ENTER |  | ENTER |         |  &kp PG_DN       |  &kp PG_UP     |  {         |   }   |  "|"  |
 //                               |                |                  |            |        |  |       |         |                  |                |
             bindings = <
-&kp F12    &kp F1           &kp F2            &kp F3            &kp F4       &kp F5                       &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11
-&trans     &kp F2           &kp BSPC          &msc SCRL_UP      &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp EXCL         &kp AT            &kp HASH          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp TILDE
-&trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
-                                              &trans            &trans       &trans    &trans   &trans    &trans    &trans    &trans
+&kp F12  &kp F1  &kp F2        &kp F3         &kp F4       &kp F5                       &kp F6     &kp F7    &kp F8    &kp F9    &kp F10   &kp F11
+&trans   &trans  &kp BSPC      &kp PG_UP      &kp PG_DN    &trans                       &trans     &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+&trans   &trans  &kp RC(BSPC)  &mkp MB2       &mkp MB1     &mkp MB3                     &kp ENTER  &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp TILDE
+&trans   &trans  &trans        &trans         &trans       &trans    &trans   &trans    &trans     &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
+                               &trans         &trans       &trans    &trans   &trans    &trans     &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
