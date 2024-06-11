@@ -39,18 +39,18 @@
         };
 
         ohnd_layer {
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |  F12  |  F1  |  F2          |  F3            |  F4              |  F5        |                   |  F6     |  F7              |  F8            |  F9        |  F10  |  F11  |
-// |       |      |  BSPC        |  &msc SCRL_UP  |  &msc SCRL_DOWN  |            |                   |         |  &msc SCRL_DOWN  |  &msc SCRL_UP  |  BSPC      |  (    |   )   |
-// |       |      |  RC(BSPC)    |  &mkp MB2      |  &mkp MB1        |  &mkp MB3  |                   |  ENTER  |  &mkp MB1        |  &mkp MB2      |  RC(BSPC)  |  F10  |  F11  |
-// |       |      |              |  &kp PG_UP     |  &kp PG_DN       |            |  ENTER |  | ENTER |         |  &kp PG_DN       |  &kp PG_UP     |  {         |   }   |  "|"  |
-//                               |                |                  |            |        |  |       |         |                  |                |
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+// |  F12  |  F1  |  F2        |  F3     |  F4         |  F5   |                   |  F6     |  F7     |  F8       |  F9        |  F10  |  F11  |
+// |       |      |  BSPC      |  msc    |  SCRL_DOWN  |       |                   |         |  msc    |  SCRL_UP  |  BSPC      |       |       |
+// |       |      |  RC(BSPC)  |  MB2    |  MB1        |  MB3  |                   |  ENTER  |  MB1    |  MB2      |  RC(BSPC)  |       |       |
+// |       |      |            |  PG_UP  |  PG_DN      |       |  ENTER |  | ENTER |         |  PG_DN  |  PG_UP    |            |       |       |
+//                             |         |             |       |        |  |       |         |         |           |
             bindings = <
-&kp F12  &kp F1  &kp F2        &kp F3         &kp F4       &kp F5                       &kp F6     &kp F7    &kp F8    &kp F9    &kp F10   &kp F11
-&trans   &trans  &kp BSPC      &kp PG_UP      &kp PG_DN    &trans                       &trans     &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&trans   &trans  &kp RC(BSPC)  &mkp MB2       &mkp MB1     &mkp MB3                     &kp ENTER  &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp TILDE
-&trans   &trans  &trans        &trans         &trans       &trans    &trans   &trans    &trans     &kp MINUS &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE
-                               &trans         &trans       &trans    &trans   &trans    &trans     &trans    &trans
+&kp F12  &kp F1  &kp F2        &kp F3         &kp F4       &kp F5                       &kp F6     &kp F7     &kp F8     &kp F9        &kp F10  &kp F11
+&trans   &trans  &kp BSPC      &kp PG_UP      &kp PG_DN    &trans                       &trans     &kp PG_DN  &kp PG_UP  &kp BSPC      &trans   &trans
+&trans   &trans  &kp RC(BSPC)  &mkp MB2       &mkp MB1     &mkp MB3                     &kp ENTER  &mkp MB1   &mkp MB2   &kp RC(BSPC)  &trans   &trans
+&trans   &trans  &trans        &trans         &trans       &trans    &trans   &trans    &trans     &kp PG_DN  &kp PG_UP  &trans        &trans   &trans
+                               &trans         &trans       &trans    &trans   &trans    &trans     &trans     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -69,6 +69,25 @@
 &kp F1    &kp F2 &kp F3 &kp F4  &kp F5  &kp F6                       &trans      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT &trans
 &kp F7    &kp F8 &kp F9 &kp F10 &kp F11 &kp F12   &trans   &trans    &kp KP_PLUS &kp MINUS &kp EQUAL &kp LBKT &kp RBKT  &kp BSLH
                         &trans  &trans  &trans    &trans   &trans    &trans      &trans    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        nump_layer {
+// TODO put mods on the other side
+// ---------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |         |   /   |   *   |  (   |   )   |       |
+// |       |     |     |      |      |      |                   |         |   7   |   8   |  9   |   [   |   ]   |
+// |       |     |     |      |      |      |                   |  ENTER  |   4   |   5   |  6   |   -   |   =   |
+// |       |     |     |      |      |      |        |  |       |  0      |   1   |   2   |  3   |   .   |       |
+//                     |      |      |      |        |  |       |         |       |       |
+            bindings = <
+&trans &trans &trans &trans &trans &trans                      &trans     &kp FSLH  &STAR   &kp LPAR  &kp RPAR   &trans
+&trans &trans &trans &trans &trans &trans                      &trans     &kp N7    &kp N8  &kp N9    &kp LBKT   &RBKT
+&trans &trans &trans &trans &trans &trans                      &kp ENTER  &kp N4    &kp N5  &kp N6    &kp MINUS  &EQUAL
+&trans &trans &trans &trans &trans &trans   &trans   &trans    &kp N0     &kp N1    &kp N2  &kp N3    &kp DOT    &trans
+                            &trans  &trans  &trans    &trans   &trans     &trans    &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
