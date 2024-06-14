@@ -132,18 +132,18 @@
         };
 
         navr_layer {
-// ------------------------------------------------------------------------------------------------------------------
-// |       |     |         |       |        |        |                   |       |       |       |      |     |     |
-// |       |     |  END    |  INS  |  DEL   |  HOME  |                   |       |       |       |      |     |     |
-// |       |     |  RIGHT  |  UP   |  DOWN  |  LEFT  |                   |       |       |       |      |     |     |
-// |       |     |         |       |        |        |        |  |       |       |       |       |      |     |     |
-//                         |       |        |        |        |  |       |       |       |       |
+// ---------------------------------------------------------------------------------------------------------------------
+// |       |     |         |         |         |        |                   |       |       |       |      |     |     |
+// |       |     |  END    |  INS    |  DEL    |  HOME  |                   |       |       |       |      |     |     |
+// |       |     |  RIGHT  |  UP     |  DOWN   |  LEFT  |                   |       |       |       |      |     |     |
+// |       |     |         |  PG_UP  |  PG_DN  |        |        |  |       |       |       |       |      |     |     |
+//                         |         |         |        |        |  |       |       |       |       |
             bindings = <
-&trans &trans &trans &trans &trans &trans                      &trans     &kp FSLH  &kp STAR  &kp LPAR  &kp RPAR   &trans
-&trans &trans &trans &trans &trans &trans                      &trans     &kp N7    &kp N8    &kp N9    &kp LBKT   &kp RBKT
-&trans &trans &trans &trans &trans &trans                      &kp ENTER  &kp N4    &kp N5    &kp N6    &kp MINUS  &kp EQUAL
-&trans &trans &trans &trans &trans &trans   &trans   &trans    &kp N0     &kp N1    &kp N2    &kp N3    &kp DOT    &trans
-                            &trans &trans   &trans   &trans    &trans     &trans    &trans    &trans
+&trans &trans &trans     &trans     &trans    &trans                     &trans &trans &trans &trans &trans &trans
+&trans &trans &kp END    &kp INS    &kp DEL   &kp HOME                   &trans &trans &trans &trans &trans &trans
+&trans &trans &kp RIGHT  &kp UP     &kp DOWN  &kp LEFT                   &trans &trans &trans &trans &trans &trans
+&trans &trans &trans     &kp PG_UP  &PG_DN    &trans    &trans   &trans  &trans &trans &trans &trans &trans &trans
+                         &trans     &trans    &trans    &trans   &trans  &trans &trans &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
