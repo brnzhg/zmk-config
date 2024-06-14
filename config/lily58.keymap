@@ -48,11 +48,11 @@
 // |       |      |            |  PG_UP  |  PG_DN      |       |  ENTER |  | ENTER |         |  PG_DN  |  PG_UP    |            |       |       |
 //                             |         |             |       |        |  |       |         |         |           |
             bindings = <
-&kp F12  &kp F1  &kp F2        &kp F3        &kp F4          &kp F5                       &kp F6     &kp F7     &kp F8     &kp F9        &kp F10  &kp F11
-&trans   &trans  &kp BSPC      &msc SCRL_UP  &msc SCRL_DOWN  &trans                       &trans     &kp PG_DN  &kp PG_UP  &kp BSPC      &trans   &trans
-&trans   &trans  &kp RC(BSPC)  &mkp MB2      &mkp MB1        &mkp MB3                     &kp ENTER  &mkp MB1   &mkp MB2   &kp RC(BSPC)  &trans   &trans
-&trans   &trans  &trans        &kp PG_UP     &kp PG_N        &trans    &trans   &trans    &trans     &kp PG_DN  &kp PG_UP  &trans        &trans   &trans
-                               &trans        &trans          &trans    &trans   &trans    &trans     &trans     &trans
+&kp F12  &kp F1  &kp F2        &kp F3        &kp F4          &kp F5                       &kp F6     &kp F7          &kp F8        &kp F9        &kp F10  &kp F11
+&trans   &trans  &kp BSPC      &msc SCRL_UP  &msc SCRL_DOWN  &trans                       &trans     &msc SCRL_DOWN  &msc SCRL_UP  &kp BSPC      &trans   &trans
+&trans   &trans  &kp RC(BSPC)  &mkp MB2      &mkp MB1        &mkp MB3                     &kp ENTER  &mkp MB1        &mkp MB2      &kp RC(BSPC)  &trans   &trans
+&trans   &trans  &trans        &kp PG_UP     &kp PG_DN       &trans    &trans   &trans    &trans     &kp PG_DN       &kp PG_UP     &trans        &trans   &trans
+                               &trans        &trans          &trans    &trans   &trans    &trans     &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
