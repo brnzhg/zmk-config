@@ -90,7 +90,7 @@
             bindings = <
 &trans &trans    &trans    &trans      &trans     &trans                      &trans     &kp LBRC  &kp RBRC   &kp LPAR  &kp RPAR  &trans
 &trans &trans    &trans    &trans      &trans     &trans                      &kp PLUS   &kp AMPS  &kp STAR   &kp RPAR  &trans    &trans
-&trans &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp MINUS  &kp DLLR  &kp PRCNT  &kp CARET &trans    &kp ENTER
+&trans &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp UNDER  &kp DLLR  &kp PRCNT  &kp CARET &trans    &kp ENTER
 &trans &trans    &trans    &trans      &trans     &trans   &trans   &trans    &trans     &kp EXCL  &kp AT     &kp HASH  &trans    &trans
                            &trans      &trans     &trans   &trans   &trans    &trans     &kp LPAR  &trans
             >;
