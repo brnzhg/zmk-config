@@ -27,13 +27,13 @@
 // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | BSPC  |
 // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   \   |
 // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   |  ENTER |  | ENTER |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   |  -     |  | =     |  N   |  M    |  ,    |  .   |   /   | SHIFT |
 //                     | GUI  | ALT  | MODL |  ESC   |  | SPACE | MODR | NUMP  | GUI   |
             bindings = <
 &kp GRAVE &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                               &kp N6   &kp N7   &kp N8    &kp N9  &kp N0   &kp BSPC
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                                &kp Y    &kp U    &kp I     &kp O   &kp P    &kp BSLH
 &kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                                &kp H    &kp J    &kp K     &kp L   &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B         &kp ENTER   &kp ENTER  &kp N    &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B         &kp MINUS   &kp EQUAL  &kp N    &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                         &kp LGUI &kp LALT &lt OHND ESC  &mo MODL    &mo MODR   &kp SPACE &mo NUMP &kp RGUI
             >;
 
@@ -43,9 +43,9 @@
         ohnd_layer {
 // ----------------------------------------------------------------------------------------------------------------------------------------------
 // |  F12  |  F1  |  F2        |  F3     |  F4         |  F5   |                   |  F6     |  F7     |  F8       |  F9        |  F10  |  F11  |
-// |       |      |  BSPC      |  msc    |  SCRL_DOWN  |       |                   |         |  msc    |  SCRL_UP  |  BSPC      |       |       |
-// |       |      |  RC(BSPC)  |  MB2    |  MB1        |  MB3  |                   |         |  MB1    |  MB2      |  RC(BSPC)  |       | ENTER |
-// |       |      |            |  PG_UP  |  PG_DN      |       |  ENTER |  | ENTER |         |  PG_DN  |  PG_UP    |            |       |       |
+// |       |      |  RC BSPC   |  msc    |  SCRL_DOWN  |       |                   |         |  msc    |  SCRL_UP  |  RC BSPC   |       |       |
+// |       |      |  BSPC      |  MB2    |  MB1        |  MB3  |                   |         |  MB1    |  MB2      |  BSPC      |       | ENTER |
+// |       |      |            |  PG_UP  |  PG_DN      |       |        |  |       |         |  PG_DN  |  PG_UP    |            |       |       |
 //                             |         |             |       |        |  |       |         |         |           |
             bindings = <
 &kp F12  &kp F1  &kp F2        &kp F3        &kp F4          &kp F5                       &kp F6     &kp F7          &kp F8        &kp F9        &kp F10  &kp F11
@@ -60,18 +60,18 @@
 
         nump_layer {
 // TODO put mods on the other side
-// ---------------------------------------------------------------------------------------------------------------
-// |       |     |      |      |      |      |                   |         |   /   |   *   |  (   |   )   |       |
-// |       |     |      |      |      |      |                   |         |   7   |   8   |  9   |   [   |   ]   |
-// |       |     | mods |      |      |      |                   |  ENTER  |   4   |   5   |  6   |   -   |   =   |
-// |       |     |      |      |      |      |        |  |       |  0      |   1   |   2   |  3   |   .   |       |
-//                      |      |      |      |        |  |       |         |       |       |
+// ------------------------------------------------------------------------------------------------------------------
+// |       |     |      |      |      |      |                   |         |   [   |   ]   |  (   |   )   |         |
+// |       |     |      |      |      |      |                   |  =      |   7   |   8   |  9   |   /   |         |
+// |       |     | mods |      |      |      |                   |  -      |   4   |   5   |  6   |   *   |  ENTER  |
+// |       |     |      |      |      |      |        |  |       |  +      |   1   |   2   |  3   |   .   |         |
+//                      |      |      |      |        |  |       |         |   0   |       |
             bindings = <
-&trans &trans    &trans    &trans      &trans     &trans                      &trans     &kp FSLH  &kp STAR  &kp LPAR  &kp RPAR   &trans
-&trans &trans    &trans    &trans      &trans     &trans                      &trans     &kp N7    &kp N8    &kp N9    &kp LBKT   &kp RBKT
-&trans &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp ENTER  &kp N4    &kp N5    &kp N6    &kp MINUS  &kp EQUAL
-&trans &trans    &trans    &trans      &trans     &trans   &trans   &trans    &kp N0     &kp N1    &kp N2    &kp N3    &kp DOT    &trans
-                           &trans      &trans     &trans   &trans   &trans    &trans    &trans    &trans
+&trans &trans    &trans    &trans      &trans     &trans                      &trans     &kp LBKR  &kp RBKT  &kp LPAR  &kp RPAR  &trans
+&trans &trans    &trans    &trans      &trans     &trans                      &kp EQUAL  &kp N7    &kp N8    &kp N9    &kp FSLH  &trans
+&trans &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp MINUS  &kp N4    &kp N5    &kp N6    &kp STAR  &kp ENTER
+&trans &trans    &trans    &trans      &trans     &trans   &trans   &trans    &kp PLUS   &kp N1    &kp N2    &kp N3    &kp DOT   &trans
+                           &trans      &trans     &trans   &trans   &trans    &trans     &kp N0    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -82,13 +82,13 @@
 // |       |       |       |         |        |        |                   |      |       |       |      |       |       |
 // |       |       |       |         |        |        |                   |      |       |       |      |       |       |
 // |       |  GUI  |  ALT  |  SHIFT  |  CTRL  |  NAVL  |                   |      |       |       |      |       |       |
-// |       |       |       |         |        |  NUMP  |        |  |       |      |       |       |      |       |       |
+// | CAPS  |       |       |         |        |  NUMP  |        |  |       |      |       |       |      |       | CAPS  |
 //                         |         |        |        |        |  |       |      |       |       |
             bindings = <
-&trans  &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &mo NAVL                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &trans    &trans      &trans     &mo NUMP  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &mo NAVL                     &trans  &trans  &trans  &trans  &trans  &trans
+&kp CAPS  &trans    &trans    &trans      &trans     &mo NUMP  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &kp CAPS
                             &trans      &trans     &trans    &trans   &trans    &trans  &trans  &trans
             >;
 
@@ -100,13 +100,13 @@
 // |       |       |       |        |        |        |                   |        |        |         |       |       |       |
 // |       |       |       |        |        |        |                   |        |        |         |       |       |       |
 // |       |       |       |        |        |        |                   |  NAVR  |  CTRL  |  SHIFT  |  ALT  |  GUI  |       |
-// |       |       |       |        |        |        |        |  |       |        |        |         |       |       |       |
+// | CAPS  |       |       |        |        |        |        |  |       |        |        |         |       |       | CAPS  |
 //                         |        |        |        |        |  |       |        |        |         |
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                       &trans    &trans    &trans      &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans                       &trans    &trans    &trans      &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans                       &mo NAVR  &kp RCTRL &kp RSHIFT  &kp RALT  &kp RGUI  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans   &trans    &trans    &trans    &trans      &trans    &trans    &trans
+&trans    &trans  &trans  &trans  &trans  &trans                       &trans    &trans    &trans      &trans    &trans    &trans
+&trans    &trans  &trans  &trans  &trans  &trans                       &trans    &trans    &trans      &trans    &trans    &trans
+&trans    &trans  &trans  &trans  &trans  &trans                       &mo NAVR  &kp RCTRL &kp RSHIFT  &kp RALT  &kp RGUI  &trans
+&kp CAPS  &trans  &trans  &trans  &trans  &trans    &trans   &trans    &trans    &trans    &trans      &trans    &trans    &kp CAPS
                         &trans  &trans  &trans    &trans   &trans    &trans    &trans    &trans
             >;
 
@@ -117,13 +117,13 @@
 // -----------------------------------------------------------------------------------------------------------------------
 // |  Fs     |     |     |      |      |      |                   |        |         |         |         |       |       |
 // |         |     |     |      |      |      |                   |  HOME  |  DEL    |  INS    |  END    |       |       |
-// |         |     |     |      |      |      |                   |  LEFT  |  DOWN   |  UP     |  RIGHT  |       |       |
+// |         |     |     |      |      |      |                   |  LEFT  |  DOWN   |  UP     |  RIGHT  |       | ENTER |
 // |         |     |     |      |      |      |        |  |       |        |  PG_DN  |  PG_UP  |         |       |       |
 //                       |      |      |      |        |  |       |        |         |         |
             bindings = <
 &kp F12  &kp F1    &kp F2    &kp F3      &kp F4     &kp F5                      &kp F6    &kp F7     &kp F8     &kp F9     &kp F10  &kp F11
 &trans   &trans    &trans    &trans      &trans     &trans                      &kp HOME  &kp DEL    &kp INS    &kp END    &trans   &trans
-&trans   &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans   &trans
+&trans   &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans   &kp ENTER
 &trans   &trans    &trans    &trans      &trans     &trans   &trans   &trans    &trans    &kp PG_DN  &kp PG_UP  &trans     &trans   &trans
                              &trans      &trans     &trans   &trans   &trans    &trans    &trans     &trans
             >;
@@ -132,16 +132,16 @@
         };
 
         navr_layer {
-// ---------------------------------------------------------------------------------------------------------------------
-// |  Fs   |     |         |         |         |        |                   |       |       |       |      |     |     |
-// |       |     |  END    |  INS    |  DEL    |  HOME  |                   |       |       |       |      |     |     |
-// |       |     |  RIGHT  |  UP     |  DOWN   |  LEFT  |                   |       |       |       |      |     |     |
-// |       |     |         |  PG_UP  |  PG_DN  |        |        |  |       |       |       |       |      |     |     |
+// -----------------------------------------------------------------------------------------------------------------------
+// |  Fs   |     |         |         |         |        |                   |       |       |       |      |     |       |
+// |       |     |  END    |  INS    |  DEL    |  HOME  |                   |       |       |       |      |     |       |
+// |       |     |  RIGHT  |  UP     |  DOWN   |  LEFT  |                   |       |       |       |      |     | ENTER |
+// |       |     |         |  PG_UP  |  PG_DN  |        |        |  |       |       |       |       |      |     |       |
 //                         |         |         |        |        |  |       |       |       |       |
             bindings = <
 &kp F12 &kp F1  &kp F2     &kp F3     &kp F4     &kp F5                     &kp F6  &kp F7     &kp F8      &kp F9    &kp F10   &kp F11
 &trans  &trans  &kp END    &kp INS    &kp DEL    &kp HOME                   &trans  &trans     &trans      &trans    &trans    &trans
-&trans  &trans  &kp RIGHT  &kp UP     &kp DOWN   &kp LEFT                   &trans  &kp RCTRL  &kp RSHIFT  &kp RALT  &kp RGUI  &trans
+&trans  &trans  &kp RIGHT  &kp UP     &kp DOWN   &kp LEFT                   &trans  &kp RCTRL  &kp RSHIFT  &kp RALT  &kp RGUI  &kp ENTER
 &trans  &trans  &trans     &kp PG_UP  &kp PG_DN  &trans    &trans   &trans  &trans  &trans     &trans      &trans    &trans    &trans
                            &trans     &trans     &trans    &trans   &trans  &trans  &trans     &trans
             >;
