@@ -13,10 +13,12 @@
 #define DEFAULT 0
 #define OHND    1
 #define NUMP    2
-#define MODL    3
-#define MODR    4
-#define NAVL    5
-#define NAVR    6
+#define SYMB    3
+#define MODL    4
+#define MODR    5
+#define NAVL    6
+#define NAVR    7
+#define BLTH    8
 
 / {
     keymap {
@@ -28,13 +30,13 @@
 // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   \   |
 // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |  -     |  | =     |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//                     | GUI  | ALT  | MODL |  ESC   |  | SPACE | MODR | NUMP  | GUI   |
+//                     | GUI  | ALT  | MODL |  ESC   |  | SPACE | MODR | OHND  | GUI   |
             bindings = <
-&kp GRAVE &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                               &kp N6   &kp N7   &kp N8    &kp N9  &kp N0   &kp BSPC
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                                &kp Y    &kp U    &kp I     &kp O   &kp P    &kp BSLH
-&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                                &kp H    &kp J    &kp K     &kp L   &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B         &kp MINUS   &kp EQUAL  &kp N    &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                        &kp LGUI &kp LALT &lt OHND ESC  &mo MODL    &mo MODR   &kp SPACE &mo NUMP &kp RGUI
+&kp GRAVE &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                               &kp N6    &kp N7    &kp N8    &kp N9  &kp N0   &kp BSPC
+&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                                &kp Y     &kp U     &kp I     &kp O   &kp P    &kp BSLH
+&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                                &kp H     &kp J     &kp K     &kp L   &kp SEMI &kp SQT
+&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B         &kp MINUS   &kp EQUAL  &kp N     &kp M     &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+                        &kp LGUI &kp LALT &lt OHND ESC  &mo MODL    &mo MODR   &kp SPACE &mo OHND &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -77,19 +79,38 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
+        symb_layer {
+// TODO put mods on the other side
+// ------------------------------------------------------------------------------------------------------------------
+// |       |     |      |      |      |      |                   |         |   {   |   }   |  (   |   )   |         |
+// |       |     |      |      |      |      |                   |  +      |   &   |   *   |  )   |       |         |
+// |       |     | mods |      |      |      |                   |  _      |   $   |   %   |  ^   |       |  ENTER  |
+// |       |     |      |      |      |      |        |  |       |         |   !   |   @   |  #   |       |         |
+//                      |      |      |      |        |  |       |         |   (   |       |
+            bindings = <
+&trans &trans    &trans    &trans      &trans     &trans                      &trans     &kp LBRC  &kp RBRC   &kp LPAR  &kp RPAR  &trans
+&trans &trans    &trans    &trans      &trans     &trans                      &kp PLUS   &kp AMPS  &kp STAR   &kp RPAR  &trans    &trans
+&trans &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &trans                      &kp MINUS  &kp DLLR  &kp PRCNT  &kp CARET &trans    &kp ENTER
+&trans &trans    &trans    &trans      &trans     &trans   &trans   &trans    &trans     &kp EXCL  &kp AT     &kp HASH  &trans    &trans
+                           &trans      &trans     &trans   &trans   &trans    &trans     &kp LPAR  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
         modl_layer {
 // -----------------------------------------------------------------------------------------------------------------------
 // |       |       |       |         |        |        |                   |      |       |       |      |       |       |
-// |       |       |       |         |        |        |                   |      |       |       |      |       |       |
+// |       |       |       |         |        |  SYM   |                   |      |       |       |      |       |       |
 // |       |  GUI  |  ALT  |  SHIFT  |  CTRL  |  NAVL  |                   |      |       |       |      |       |       |
 // | CAPS  |       |       |         |        |  NUMP  |        |  |       |      |       |       |      |       | CAPS  |
 //                         |         |        |        |        |  |       |      |       |       |
             bindings = <
 &trans    &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans    &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans    &trans    &trans      &trans     &mo SYMB                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans    &kp LGUI  &kp LALT  &kp LSHIFT  &kp LCTRL  &mo NAVL                     &trans  &trans  &trans  &trans  &trans  &trans
 &kp CAPS  &trans    &trans    &trans      &trans     &mo NUMP  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &kp CAPS
-                            &trans      &trans     &trans    &trans   &trans    &trans  &trans  &trans
+                              &trans      &trans     &trans    &trans   &mo BLTH  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -103,11 +124,11 @@
 // | CAPS  |       |       |        |        |        |        |  |       |        |        |         |       |       | CAPS  |
 //                         |        |        |        |        |  |       |        |        |         |
             bindings = <
-&trans    &trans  &trans  &trans  &trans  &trans                       &trans    &trans    &trans      &trans    &trans    &trans
-&trans    &trans  &trans  &trans  &trans  &trans                       &trans    &trans    &trans      &trans    &trans    &trans
-&trans    &trans  &trans  &trans  &trans  &trans                       &mo NAVR  &kp RCTRL &kp RSHIFT  &kp RALT  &kp RGUI  &trans
-&kp CAPS  &trans  &trans  &trans  &trans  &trans    &trans   &trans    &trans    &trans    &trans      &trans    &trans    &kp CAPS
-                        &trans  &trans  &trans    &trans   &trans    &trans    &trans    &trans
+&trans    &trans  &trans  &trans  &trans  &trans                         &trans    &trans    &trans      &trans    &trans    &trans
+&trans    &trans  &trans  &trans  &trans  &trans                         &trans    &trans    &trans      &trans    &trans    &trans
+&trans    &trans  &trans  &trans  &trans  &trans                         &mo NAVR  &kp RCTRL &kp RSHIFT  &kp RALT  &kp RGUI  &trans
+&kp CAPS  &trans  &trans  &trans  &trans  &trans    &trans     &trans    &trans    &trans    &trans      &trans    &trans    &kp CAPS
+                          &trans  &trans  &trans    &mo BLTH   &trans    &trans    &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -148,5 +169,27 @@
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
+
+        blth_layer {
+// -----------------------------------------------------------------------------------------------------------------------------
+// | EXT PWR TOGGLE | BT1     | BT2    |  BT3 |  BT4  |  BT5 |                    |      |       |       |      |       |       |
+// |                |         |        |      |       |      |                    |      |       |       |      |       |       |
+// |                |         |        |      |       |      |                    |      |       |       |      |       |       |
+// |                |  EP_ON  | EP_OFF |      |       |      |       |  |         |      |       |       |      |       |       |
+//                                     |      |       |      |       |  |         |      |       |       |
+            bindings = <
+    &ext_power EP_TOG &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                       &trans    &trans   &trans    &trans  &trans  &trans
+    &trans            &trans        &trans        &trans        &trans        &trans                             &trans    &trans   &trans    &trans  &trans  &trans
+    &trans            &trans        &trans        &trans        &trans        &kp PRCNT                          &trans    &trans   &trans    &trans  &trans  &trans
+    &trans            &trans        &trans        &trans        &trans        &trans         &trans    &kp DEL   &trans    &trans   &trans    &trans  &trans  &trans
+                                                  &trans        &trans        &trans         &trans    &trans    &trans    &trans   &trans    
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+
+
+
     };
 };
