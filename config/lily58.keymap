@@ -19,6 +19,7 @@
 #define NAVL    6
 #define NAVR    7
 #define BLTH    8
+#define GAME    9
 
 / {
     keymap {
@@ -174,14 +175,14 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 // | EXT PWR TOGGLE | BT1     | BT2    |  BT3 |  BT4  |  BT5 |                    |      |       |       |      |       |       |
 // |                |         |        |      |       |      |                    |      |       |       |      |       |       |
-// |                |         |        |      |       |      |                    |      |       |       |      |       |       |
+// |                |         |        |      |       |  GME |                    |      |       |       |      |       |       |
 // |                |  EP_ON  | EP_OFF |      |       |      |       |  |         |      |       |       |      |       |       |
 //                                     |      |       |      |       |  |         |      |       |       |
             bindings = <
     &ext_power EP_TOG &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                       &trans    &trans   &trans    &trans  &trans  &trans
     &trans            &trans        &trans        &trans        &trans        &trans                             &trans    &trans   &trans    &trans  &trans  &trans
-    &trans            &trans        &trans        &trans        &trans        &kp PRCNT                          &trans    &trans   &trans    &trans  &trans  &trans
-    &trans            &trans        &trans        &trans        &trans        &trans         &trans    &kp DEL   &trans    &trans   &trans    &trans  &trans  &trans
+    &trans            &trans        &trans        &trans        &trans        &tog GAME                          &trans    &trans   &trans    &trans  &trans  &trans
+    &trans            &trans        &trans        &trans        &trans        &trans         &trans    &trans    &trans    &trans   &trans    &trans  &trans  &trans
                                                   &trans        &trans        &trans         &trans    &trans    &trans    &trans   &trans    
             >;
 
@@ -189,6 +190,24 @@
         };
 
 
+        game_layer {
+// TODO put mods on the other side
+// ------------------------------------------------------------------------------------------------------------------
+// |       |     |      |      |      |      |                   |         |   [   |   ]   |  (   |   )   |         |
+// |       |     |      |  W   |      |      |                   |  =      |   7   |   8   |  9   |   /   |         |
+// |       |     |  A   |  S   |  D   | GME  |                   |  -      |   4   |   5   |  6   |   *   |  ENTER  |
+// |       |     |      |      |      |      |        |  |       |  +      |   1   |   2   |  3   |   .   |         |
+//                      |      |      |      |        |  |       |         |   0   |       |
+            bindings = <
+&trans &trans    &trans    &trans      &trans     &trans                       &trans  &trans     &trans     &trans     &trans  &trans
+&trans &trans    &trans    &kp W       &trans     &trans                       &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9  &trans  &trans
+&trans &trans    &kp A     &kp S       &kp D      &tog GAME                    &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &trans  &kp ENTER
+&trans &trans    &trans    &trans      &trans     &trans    &trans   &trans    &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3  &trans  &trans
+                           &trans      &trans     &trans    &trans   &trans    &trans  &kp KP_N0  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
 
 
     };
