@@ -11,6 +11,7 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <interfaces/hid-trackball.dtsi>
 
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 40
 
 #define DEFAULT 0
 #define OHND    1
@@ -55,7 +56,7 @@
             bindings = <
 &kp F12  &kp F1  &kp F2         &kp F3        &kp F4          &kp F5                       &kp F6     &kp F7          &kp F8        &kp F9        &kp F10  &kp F11
 &trans   &trans  &kp RC(BSPC)   &msc SCRL_UP  &msc SCRL_DOWN  &trans                       &trans     &msc SCRL_DOWN  &msc SCRL_UP  &kp RC(BSPC)  &trans   &trans
-&trans   &trans  &tb_mo_scroll  &mkp MB2      &mkp MB1        &mkp MB3                     &trans     &mkp MB1        &mkp MB2      &kp BSPC      &trans   &kp ENTER
+&trans   &trans  &kp BSPC       &mkp MB2      &mkp MB1        &mkp MB3                     &trans     &mkp MB1        &mkp MB2      &kp BSPC      &trans   &kp ENTER
 &trans   &trans  &trans         &kp PG_UP     &kp PG_DN       &trans    &trans   &trans    &trans     &kp PG_DN       &kp PG_UP     &trans        &trans   &trans
                                 &trans        &trans          &trans    &trans   &trans    &trans     &trans          &trans
             >;
