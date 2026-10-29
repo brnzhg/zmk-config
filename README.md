@@ -1,6 +1,6 @@
 # zmk-config: Lily58
 
-ZMK firmware config for my wireless Lily58 split keyboard. GitHub Actions builds the firmware. Nothing gets compiled locally.
+ZMK firmware config for my wireless Lily58 split keyboard. GitHub Actions builds the firmware. Nothing gets compiled locally. Agents: also read `AGENTS.md`.
 
 ## Hardware
 - Lily58 split, a 6x4 grid plus 4 thumb keys and 1 inner key per half (58 keys)
@@ -67,11 +67,3 @@ After a keymap-only change, flashing just the **left** half is usually enough, b
 | 9 | `GAME` | `BLTH` + G toggles it. Press G again to turn it off | WASD on the left, keypad digits on the right |
 
 On every layer, `sensor-bindings` maps an encoder to volume, but the encoder is off (`CONFIG_EC11` is commented out in `lily58.conf`).
-
-## Notes for agents editing this repo
-- **Keep the ASCII comments in sync with `bindings`.** When you edit a layer, update its diagram too. If the two ever disagree, `bindings` is what's on the keyboard.
-- Each layer's `bindings` must hold exactly 58 entries, laid out as 6 + 6 / 6 + 6 / 6 + 6 / 6 + 1 + 1 + 6 / 4 + 4 thumbs. The two inner keys sit at the end of row 4, between `B` and `N`.
-- The layer `#define`s at the top must match the order of the layer nodes inside `keymap`.
-- Layers that should pass through use `&trans`. The mod layers rely on that, since they're mostly transparent.
-- There's no local build setup on this machine. Validate a change by pushing and running `gh run watch`, and use `gh run view --log-failed` on failure. `podman` is installed if a local ZMK build container is ever wanted.
-- Check zmk.dev for behavior and Kconfig names. This tracks upstream `main`, so older blog posts and forum answers may use outdated names (`mouse.h`, `CONFIG_ZMK_MOUSE`, `nice_nano_v2`).
