@@ -1,20 +1,13 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware 
-    - name: petejohanson
-      url-base: https://github.com/petejohanson
-    - name: englmaxi
-      url-base: https://github.com/englmaxi
+      url-base: https://github.com/zmkfirmware
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
-      remote: petejohanson
-      revision: feat/pointers-move-scroll
-      import: app/west.yml
-    - name: zmk-hid-trackball-interface
-      remote: englmaxi
+      remote: zmkfirmware
       revision: main
+      import: app/west.yml
   self:
     path: config

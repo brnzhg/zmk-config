@@ -12,24 +12,30 @@ ZMK firmware config for my wireless Lily58 split keyboard. GitHub Actions builds
 | File | What it does |
 |---|---|
 | `config/lily58.keymap` | Layers and key bindings. Most changes go here. |
-| `config/lily58.conf` | Kconfig flags: display on, mouse on, encoder off |
-| `config/west.yml` | Which ZMK and which modules get pulled in |
+| `config/lily58.conf` | Kconfig flags: display on, mouse keys (pointing) on, encoder off |
+| `config/west.yml` | Which ZMK gets pulled in (upstream `main`) |
 | `build.yaml` | Build matrix, left and right halves |
 | `.github/workflows/build.yml` | CI that calls ZMK's reusable `build-user-config.yml` |
 
-### Not upstream ZMK
-`west.yml` pins ZMK to **petejohanson's `feat/pointers-move-scroll` branch**, not `zmkfirmware/zmk`. That branch is where the mouse move/scroll support (`&mkp`, `&msc`, `ZMK_MOUSE_DEFAULT_SCRL_VAL`, `CONFIG_ZMK_MOUSE`) came from. Keep this in mind:
-- Upstream ZMK docs might not match this branch. When a feature doesn't work, check whether the branch actually has it.
-- The CI workflow uses `build-user-config.yml@main` from *upstream* while the build uses the fork. If upstream changes that workflow in a way that breaks the old branch, pin the `uses:` line to an older ref.
-- Switching to upstream ZMK is possible, since pointer support has since been merged there. Expect renames, though, such as `CONFIG_ZMK_POINTING` and `dt-bindings/zmk/pointing.h`. Check the current upstream docs before trying it.
+### Upstream ZMK
+`west.yml` tracks `zmkfirmware/zmk` at `main`, and the CI workflow uses upstream's `build-user-config.yml@main`. Both move together, so the official docs at zmk.dev apply. Mouse keys use upstream's pointing support (`CONFIG_ZMK_POINTING`, `dt-bindings/zmk/pointing.h`, `ZMK_POINTING_DEFAULT_SCRL_VAL`). Scroll is set to 40, versus upstream's default of 10.
+
+The catch is that ZMK's `main` can change under you. If a build breaks with no change to this repo, check the ZMK blog for migration notes. The 25-12 Zephyr 4.1 update, for example, renamed the board from `nice_nano_v2` to `nice_nano//zmk`.
+
+(Until 26-10 this config used petejohanson's `feat/pointers-move-scroll` fork for mouse support.)
 
 ## Update the keymap
 1. Edit `config/lily58.keymap`. Each layer has an ASCII diagram comment above its `bindings`.
 2. Commit and push to `master`. Every push triggers a build (pull requests and manual `workflow_dispatch` runs do too).
-3. Go to GitHub, then **Actions**, then the latest run, and download the `firmware` artifact (a zip).
-4. Unzip it. There's one `.uf2` per half: `lily58_left nice_view_adapter nice_view-nice_nano_v2-zmk.uf2` and the matching right file.
+3. Wait for the build and download the firmware:
+   ```
+   gh run watch                                                   # pick the latest run
+   rm -rf ~/Downloads/lily58 && gh run download -n firmware -D ~/Downloads/lily58
+   ```
+   Or go to GitHub, then **Actions**, then the run, and download the `firmware` artifact.
+4. There's one `.uf2` per half, named after its shield (`lily58_left ...` and `lily58_right ...`).
 
-If a build fails, open the failed job's log and look at the `West Build` step. Devicetree errors there usually point to a line in the keymap.
+If a build fails, `gh run view --log-failed` shows the error. Look at the `West Build` step. Devicetree errors there usually point to a line in the keymap.
 
 ## Flash the keyboard
 Flash each half on its own:
@@ -67,4 +73,5 @@ On every layer, `sensor-bindings` maps an encoder to volume, but the encoder is 
 - Each layer's `bindings` must hold exactly 58 entries, laid out as 6 + 6 / 6 + 6 / 6 + 6 / 6 + 1 + 1 + 6 / 4 + 4 thumbs. The two inner keys sit at the end of row 4, between `B` and `N`.
 - The layer `#define`s at the top must match the order of the layer nodes inside `keymap`.
 - Layers that should pass through use `&trans`. The mod layers rely on that, since they're mostly transparent.
-- There's no local build setup on this machine. Validate a change by pushing and checking the Actions run. `podman` is installed if a local ZMK build container is ever wanted.
+- There's no local build setup on this machine. Validate a change by pushing and running `gh run watch`, and use `gh run view --log-failed` on failure. `podman` is installed if a local ZMK build container is ever wanted.
+- Check zmk.dev for behavior and Kconfig names. This tracks upstream `main`, so older blog posts and forum answers may use outdated names (`mouse.h`, `CONFIG_ZMK_MOUSE`, `nice_nano_v2`).
