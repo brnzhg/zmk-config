@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <interfaces/hid-trackball.dtsi>
 
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 40
@@ -34,7 +35,7 @@
 // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   \   |
 // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |  -     |  | =     |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//                     | GUI  | ALT  | MODL |  ESC   |  | SPACE | MODR | OHND  | GUI   |
+//                     | GUI  | ALT  |ESC/OHND| MODL |  | MODR  | SPACE | OHND  | GUI   |
             bindings = <
 &kp GRAVE &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                               &kp N6    &kp N7    &kp N8    &kp N9  &kp N0   &kp BSPC
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                                &kp Y     &kp U     &kp I     &kp O   &kp P    &kp BSLH
@@ -49,8 +50,8 @@
         ohnd_layer {
 // ----------------------------------------------------------------------------------------------------------------------------------------------
 // |  F12  |  F1  |  F2        |  F3     |  F4         |  F5   |                   |  F6     |  F7     |  F8       |  F9        |  F10  |  F11  |
-// |       |      |  RC BSPC   |  msc    |  SCRL_DOWN  |       |                   |         |  msc    |  SCRL_UP  |  RC BSPC   |       |       |
-// |       |      |  DRAG      |  MB2    |  MB1        |  MB3  |                   |         |  MB1    |  MB2      |  BSPC      |       | ENTER |
+// |       |      |  RC BSPC   | SCRL_UP |  SCRL_DOWN  |       |                   |         |SCRL_DOWN|  SCRL_UP  |  RC BSPC   |       |       |
+// |       |      |  BSPC      |  MB2    |  MB1        |  MB3  |                   |         |  MB1    |  MB2      |  BSPC      |       | ENTER |
 // |       |      |            |  PG_UP  |  PG_DN      |       |        |  |       |         |  PG_DN  |  PG_UP    |            |       |       |
 //                             |         |             |       |        |  |       |         |         |           |
             bindings = <
@@ -108,7 +109,7 @@
 // |       |       |       |         |        |  SYM   |                   |      |       |       |      |       |       |
 // |       |  GUI  |  ALT  |  SHIFT  |  CTRL  |  NAVL  |                   |      |       |       |      |       |       |
 // | CAPS  |       |       |         |        |  NUMP  |        |  |       |      |       |       |      |       | CAPS  |
-//                         |         |        |        |        |  |       |      |       |       |
+//                         |         |        |        |        |  | BLTH  |      |       |       |
             bindings = <
 &trans    &trans    &trans    &trans      &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &trans    &trans    &trans    &trans      &trans     &mo SYMB                     &trans  &trans  &trans  &trans  &trans  &trans
@@ -126,7 +127,7 @@
 // |       |       |       |        |        |        |                   |        |        |         |       |       |       |
 // |       |       |       |        |        |        |                   |  NAVR  |  CTRL  |  SHIFT  |  ALT  |  GUI  |       |
 // | CAPS  |       |       |        |        |        |        |  |       |        |        |         |       |       | CAPS  |
-//                         |        |        |        |        |  |       |        |        |         |
+//                         |        |        |        |  BLTH  |  |       |        |        |         |
             bindings = <
 &trans    &trans  &trans  &trans  &trans  &trans                         &trans    &trans    &trans      &trans    &trans    &trans
 &trans    &trans  &trans  &trans  &trans  &trans                         &trans    &trans    &trans      &trans    &trans    &trans
@@ -176,14 +177,14 @@
 
         blth_layer {
 // --------------------------------------------------------------------------------------------------------------------------------
-// | EXT PWR TOGGLE | BT1     | BT2    |  BT3 |  BT4  |  BT5 |                    | PLAY | VOL_UP | VOL_DN |      |       |       |
-// |                |         |        |      |       |      |                    |      |        |        |      |       |       |
+// | EXT PWR TOGGLE | BT1     | BT2    |  BT3 |  BT4  |  BT5 |                    | PLAY | VOL_DN | VOL_UP |      |       |       |
+// |                | BT_CLR  | OUT_TG |      |       |      |                    |      |        |        |      |       |       |
 // |                |         | DPI    |      |       |  GME |                    |      |        |        |      |       |       |
-// |                |  EP_ON  | EP_OFF |      |       |      |       |  |         |      |        |        |      |       |       |
+// |                |         |        |      |       |      |       |  |         |      |        |        |      |       |       |
 //                                     |      |       |      |       |  |         |      |        |        |
             bindings = <
     &ext_power EP_TOG &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                       &kp C_PLAY_PAUSE  &kp C_VOL_DN  &kp C_VOL_UP  &trans  &trans  &trans
-    &trans            &trans        &trans         &trans        &trans        &trans                             &trans    &trans   &trans    &trans  &trans  &trans
+    &trans            &bt BT_CLR    &out OUT_TOG   &trans        &trans        &trans                             &trans    &trans   &trans    &trans  &trans  &trans
     &trans            &trans        &tb_cyc_dpi    &trans        &trans        &tog GAME                          &trans    &trans   &trans    &trans  &trans  &trans
     &trans            &trans        &trans         &trans        &trans        &trans         &trans    &trans    &trans    &trans   &trans    &trans  &trans  &trans
                                                    &trans        &trans        &trans         &trans    &trans    &trans    &trans   &trans    
@@ -196,10 +197,10 @@
         game_layer {
 // TODO put mods on the other side
 // ------------------------------------------------------------------------------------------------------------------
-// |       |     |      |      |      |      |                   |         |   [   |   ]   |  (   |   )   |         |
-// |       |     |      |  W   |      |      |                   |  =      |   7   |   8   |  9   |   /   |         |
-// |       |     |  A   |  S   |  D   | GME  |                   |  -      |   4   |   5   |  6   |   *   |  ENTER  |
-// |       |     |      |      |      |      |        |  |       |  +      |   1   |   2   |  3   |   .   |         |
+// |       |     |      |      |      |      |                   |         |       |       |      |       |         |
+// |       |     |      |  W   |      |      |                   |         |  KP7  |  KP8  | KP9  |       |         |
+// |       |     |  A   |  S   |  D   | GME  |                   |         |  KP4  |  KP5  | KP6  |       |  ENTER  |
+// |       |     |      |      |      |      |        |  |       |         |  KP1  |  KP2  | KP3  |       |         |
 //                      |      |      |      |        |  |       |         |   0   |       |
             bindings = <
 &trans &trans    &trans    &trans      &trans     &trans                       &trans  &trans     &trans     &trans     &trans  &trans
