@@ -64,6 +64,6 @@ After a keymap-only change, flashing just the **left** half is usually enough, b
 | 6 | `NAVL` | `MODL` + G | Left mods, right-hand arrows (on HJKL), Home/End/Del/Ins, F-row |
 | 7 | `NAVR` | `MODR` + H | Mirror of `NAVL`, with arrows on the left hand and mods on the right |
 | 8 | `BLTH` | hold both inner thumbs | BT profiles 1–5 (keys 1–5), clear current BT profile (Q), USB/BLE output toggle (W), external power toggle (`` ` `` key), media play/vol (6/7/8), `GAME` toggle (G) |
-| 9 | `GAME` | `BLTH` + G toggles it. Press G again to turn it off | WASD on the left, keypad digits on the right |
+| 9 | `GAME` | `BLTH` + G toggles it on, and `BLTH` + G again turns it off. G on its own stays a plain G | WASD on the ESDF positions, keypad digits on the right (KP0 on the right outer thumb), Enter on `'`. Everything else passes through to `DEFAULT` |
 
 On every layer, `sensor-bindings` maps an encoder to volume, but the encoder is off (`CONFIG_EC11` is commented out in `lily58.conf`).

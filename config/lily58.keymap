@@ -194,17 +194,19 @@
 
 
         game_layer {
-// TODO put mods on the other side
-// ------------------------------------------------------------------------------------------------------------------
-// |       |     |      |      |      |      |                   |         |       |       |      |       |         |
-// |       |     |      |  W   |      |      |                   |         |  KP7  |  KP8  | KP9  |       |         |
-// |       |     |  A   |  S   |  D   | GME  |                   |         |  KP4  |  KP5  | KP6  |       |  ENTER  |
-// |       |     |      |      |      |      |        |  |       |         |  KP1  |  KP2  | KP3  |       |         |
-//                      |      |      |      |        |  |       |         |   0   |       |
+// Toggled on and off with BLTH + G (hold both inner thumbs, tap G).
+// Shows what each key sends while GAME is on: keys marked * are set here, the rest pass through to DEFAULT.
+// WASD sits on the ESDF positions, so the left hand stays on the home row.
+// ------------------------------------------------------------------------------------------------------------
+// |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | BSPC  |
+// |  TAB  |  Q  |  W  |  W*  |  R   |  T   |                   |  Y   |  KP7* |  KP8* | KP9* |   P   |   \   |
+// |  CTRL |  A  |  A* |  S*  |  D*  |  G   |                   |  H   |  KP4* |  KP5* | KP6* |   ;   | ENTER*|
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   |  -     |  | =     |  N   |  KP1* |  KP2* | KP3* |   /   | SHIFT |
+//                     | GUI  | ALT  |ESC/OHND| MODL |  | MODR  | SPACE | KP0*  | GUI   |
             bindings = <
 &trans &trans    &trans    &trans      &trans     &trans                       &trans  &trans     &trans     &trans     &trans  &trans
 &trans &trans    &trans    &kp W       &trans     &trans                       &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9  &trans  &trans
-&trans &trans    &kp A     &kp S       &kp D      &tog GAME                    &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &trans  &kp ENTER
+&trans &trans    &kp A     &kp S       &kp D      &trans                       &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &trans  &kp ENTER
 &trans &trans    &trans    &trans      &trans     &trans    &trans   &trans    &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3  &trans  &trans
                            &trans      &trans     &trans    &trans   &trans    &trans  &kp KP_N0  &trans
             >;
